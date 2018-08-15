@@ -107,7 +107,7 @@ alias du='du -h'
 # 	if [ -n "$1" ]; then
 # 		job_cmd=$(at -c "$job_no" | grep "^php" | grep "$1" | sed -e "s/string1/g" -e "s/string2/g");
 # 	else
-# 		job_cmd=$(at -c "$job_no" | grep "^php" | sed -e "s/php -f \/string1/g" -e "s/string2/g");
+# 		job_cmd=$(at -c "$job_no" | grep "^php" | sed -e "s/string1/g" -e "s/string2/g");
 # 	fi;
 # 
 # 	if [ -n "$job_cmd" ]; then
