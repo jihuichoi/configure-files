@@ -74,6 +74,12 @@
 	# 페이저로 표시, 자세히
 	llp = log --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- ./
 
+	# log and grep
+	#커밋로그에서 검색
+	gr=!git log --oneline --decorate --grep
+	#파일에서 검색
+	grf=!git log --oneline --decorate -G
+	
 	
 	# 정리 필요	
 	lc = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git ll $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
@@ -111,6 +117,7 @@
     mm = "!git merge master"
     cd = "!git checkout develop"
     md = "!git merge develop"
+	
 
     # GitFlow shortcuts
     fid = !git flow init -d
