@@ -94,7 +94,7 @@ alias du='du -h'
 
 
 
-# Not use
+# Not in use
 # 
 # #log tail 관련
 # alias ctail='_(){ tail $@ | $LINUX_SETTING/bin/color.pl; }; _'
