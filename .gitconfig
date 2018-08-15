@@ -1,0 +1,140 @@
+[user]
+	name = 
+	email = 
+
+[log]
+	decorate = full
+[color]
+	ui = true
+[push]
+	default = matching
+[diff]
+	compactionHeuristic = true
+
+
+# GIT aliases for ~/.gitconfig file
+# @author Grzegorz Korba <grzegorz.korba@codito.net>
+# Credits: Miscellaneous places on the Internet...
+
+# GitFlow related sections
+[gitflow "branch"]
+    master = master
+    develop = develop
+[gitflow "prefix"]
+    feature = feature/
+    release = release/
+    hotfix = hotfix/
+    bugfix = bugfix/
+    support = support/
+    versiontag = 
+
+# Alias section.
+[alias]
+	# List available aliases
+	la = !git config -l | grep alias | cut -c 7- | sed 's/=/ = /'
+
+    # Make file executable (chmod +x)
+    exec = "!f() { if [ -f $1 ]; then git update-index --chmod=+x --add $1; else echo 'Invalid file'; exit 1; fi; }; f"
+
+    # Some base commands
+    cp = cherry-pick
+    st = status -s
+    cl = clone
+    ci = commit -m
+    co = checkout
+    br = branch -v
+    diff = diff --word-diff=color
+    dc = diff --cached
+
+    # List range of commits in human-readable way ex)git dn master develop
+    devnotes = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git log --date=short --stat --pretty='format:[%ad %C(cyan)%aN%Creset] %s %b' --abbrev-commit $1..$2; else echo 'Invalid from/to'; exit 1; fi; }; f"
+    dn = !git devnotes
+    relnotes = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git log --pretty='format:[%C(cyan)%aN%Creset @ %C(yellow)%h%Creset] %s %b' --abbrev-commit $1..$2 --no-merges; else echo 'Invalid from/to'; exit 1; fi; }; f"
+    rn = !git relnotes
+
+    # Version tags
+    #lv = "!f() { VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag || echo ''); TAGS_LIST=$(git rev-list --tags=$VERSION_PREFIX'[0-9].[0-9]*' --max-count=1 2>&1); S=$?; if [[ $S = 0 ]]; then git describe --tags $TAGS_LIST; else echo 'No version tags found'; exit 1; fi; }; f"
+    av = !git describe --abbrev=0
+    
+	# log commands
+	#ll = log --pretty=format:%C(yellow)%h\\ %Cblue[%cn]%Cred%d\\ %Creset%s --decorate --numstat
+    #ls = log --pretty=format:%C(yellow)%h\\ %Cblue[%cn]%Cred%d\\ %Creset%s --decorate
+    #ld = log --pretty=format:%C(yellow)%h\\ %Cblue[%cn,\\ %ad]%Cred%d\\ %Creset%s --decorate --date=short
+
+	# 특정 단어가 들어간 코멘트는 제외하고 보여줌. 예: 커밋 메세지에 misc 가 들어간 커밋은 제외
+	le = log --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --grep misc --invert-grep -- ./
+	
+	# 페이저 없이 최근 20개만
+	l = !git --no-pager log -n20 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' -- ./
+	# 페이저 없이 최근 20개만, 자세히
+	ll = !git --no-pager log -n20 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- ./
+
+	# 페이저로 표시
+	lp = log --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' -- ./
+	# 페이저로 표시, 자세히
+	llp = log --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- ./
+
+	
+	# 정리 필요	
+	lc = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git ll $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
+    diffr = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git diff $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
+    dr = !git diffr
+    f = !git ls-files | grep -i
+    lasttag = describe --tags --abbrev=0
+    lt = !git lasttag
+
+
+
+    # Ignoring files locally
+    assume = "!f() { if [ -f $1 ]; then git update-index --assume-unchanged $1; else echo 'Invalid file'; exit 1; fi; }; f"
+    unassume = "!f() { if [ -f $1 ]; then git update-index --no-assume-unchanged $1; else echo 'Invalid file'; exit 1; fi; }; f"
+    assumed = !git ls-files -v | grep '^[[:lower:]]' | cut -c 3-
+    ignored = !git assumed
+    unassumeall = !git assumed | xargs git update-index --no-assume-unchanged
+    uaa = !git unassumeall
+    assumeall = !git st -s | awk {'print $2'} | xargs git assume
+    aa = !git assumeall
+
+    # Stash commands
+    ss = "!git stash save"
+    sp = "!git stash pop"
+    sa = "!git stash apply"
+    sl = "!git stash list"
+    sc = "!git stash clear"
+
+    # Tags commands
+    ft = "!git fetch --tags"
+    pt = "!git push --tags"
+
+    # Basic navigation
+    cm = "!git checkout master"
+    mm = "!git merge master"
+    cd = "!git checkout develop"
+    md = "!git merge develop"
+
+    # GitFlow shortcuts
+    fid = !git flow init -d
+
+    # "fcb" alias is a shortcut for getting current branch for GitFlow (without prefix)
+    # and is strictly related to [gitflow "prefix"] config section (cuts everything after first "/")
+    fcb = "!f() { git rev-parse --abbrev-ref HEAD | cut -d'/' -f 2-; }; f"
+
+    cf = "!f() { git checkout $(git config --get gitflow.prefix.feature || echo feature)$1; }; f"
+    ffs = "!f() { if [ ! -z $1 ] ; then git flow feature start $1 ${2:-master}; else echo 'Invalid name'; exit 1; fi; }; f"
+    fff = !git flow feature finish -F $(git fcb)
+    ffp = !git flow feature publish $(git fcb)
+
+    cb = "!f() { git checkout $(git config --get gitflow.prefix.bugfix || echo bugfix)$1; }; f"
+    fbs = "!f() { if [ ! -z $1 ] ; then git flow bugfix start $1 ${2:-master}; else echo 'Invalid name'; exit 1; fi; }; f"
+    fbf = !git flow bugfix finish -F $(git fcb)
+    fbp = !git flow bugfix publish $(git fcb)
+
+    ch = "!f() { git checkout $(git config --get gitflow.prefix.hotfix || echo hotfix)$1; }; f"
+    fhs = "!f() { if [ ! -z $1 ] ; then git flow hotfix start $1 ${2:-master}; else echo 'Invalid name'; exit 1; fi; }; f"
+    fhf = "!git fetch --tags; git pull $(git config --get gitflow.origin || echo origin) master; git flow hotfix finish -F $(git fcb)"
+    fhp = !git flow hotfix publish $(git fcb)
+
+    cr = "!f() { git checkout $(git config --get gitflow.prefix.release || echo release)$1; }; f"
+    frs = "!f() { if [ ! -z $1 ] ; then git flow release start $1 ${2:-master}; else echo 'Invalid name'; exit 1; fi; }; f"
+    frf = !git flow release finish -F $(git fcb)
+    frp = !git flow release publish $(git fcb)
