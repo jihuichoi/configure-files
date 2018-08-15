@@ -8,7 +8,7 @@ while(<STDIN>) {
         s/\[ERROR\].*/\e[0;31m$&\e[0m/gi;         #red : error
         s/\[INFO\].*/\e[0;90m$&\e[0m/gi;      		#blue
         s/\[DEBUG\].*/\e[1;34m$&\e[0m/gi; 				#green : debug
-        s/\[warning\].*/\e[1;33m$&\e[0m/gi;				#yellow :warning       
+        s/\[WARNING\].*/\e[1;33m$&\e[0m/gi;				#yellow :warning       
         
     }  
     print $line, "\n";  
