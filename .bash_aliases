@@ -51,7 +51,7 @@ alias dus4='du -ch --max-depth  4 | sort -h'
 
 # basic actions
 alias gch='git checkout'
-alias gs='git status'
+alias gs='git status -s'
 alias gad='git add'
 alias gcm='git commit -m'
 alias gdf='git diff --word-diff=color'
