@@ -4,3 +4,4 @@
 ## Configure files
 - .bash_aliases : 배시쉘용 alias 모음
 - .gitconfig : git 설정 및 alias
+- .ssh/config : ssh 설정
