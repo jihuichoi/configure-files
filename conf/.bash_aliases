@@ -6,8 +6,11 @@ alias workspace='~/workspace'
 
 #Golang
 alias govendor='~/go/bin/govendor'
-alias fresh='~/go/bin/fresh'
+alias realize='~/go/bin/realize'
+alias godep='~/go/bin/dep'
 
+#Docker
+alias dockerbash='docker exec -it $@ /bin/bash'
 
 
 ### find, ls, grep, du
@@ -36,20 +39,21 @@ alias lt='ls -alhtr'	# all, long, human-readble, sort by modi-time, order by rev
 alias gr='grep -nir --color' #
 
 # du with depth and sort
-alias du1='du -ch --max-depth 1'
-alias du2='du -ch --max-depth  2'
-alias du3='du -ch --max-depth  3'
-alias du4='du -ch --max-depth  4'
-alias dus1='du -ch --max-depth  1 | sort -h'	# -h : human-numeric-sort
-alias dus2='du -ch --max-depth  2 | sort -h'
-alias dus3='du -ch --max-depth  3 | sort -h'
-alias dus4='du -ch --max-depth  4 | sort -h'
+alias du1='du -ch -d 1'
+alias du2='du -ch -d  2'
+alias du3='du -ch -d  3'
+alias du4='du -ch -d  4'
+alias dus1='du -ch -d  1 | sort -h'	# -h : human-numeric-sort
+alias dus2='du -ch -d  2 | sort -h'
+alias dus3='du -ch -d  3 | sort -h'
+alias dus4='du -ch -d  4 | sort -h'
 
 
 
 ### GIT
 
 # basic actions
+alias git='LANG=en_GB git'
 alias gch='git checkout'
 alias gs='git status -s'
 alias gad='git add'
@@ -61,13 +65,19 @@ function gpush() { if [ $# -eq 0 ]; then git push origin $(git branch | cut -d" 
 function gpull() { if [ $# -eq 0 ]; then git pull origin $(git branch | cut -d" " -f 2); else git pull origin $1; fi;}
 
 # pull master/develop from origin and back to current branch
-function gupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}'); 
-	git checkout master && git pull origin master \
+function gsupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}'); 
+	git checkout master && git pull origin master && git subtree pull --prefix=protobuf protobuf master \
 	&& printf "\n" \
-	&& git checkout develop && git pull origin develop \
+	&& git checkout develop && git pull origin develop && git subtree pull --prefix=protobuf protobuf master \
 	&& printf "\n" \
-	&& git checkout $currentbranch; }; 
+	&& git checkout $currentbranch && git subtree pull --prefix=protobuf protobuf master; }; 
 
+function gupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}'); 
+	git checkout master && git pull origin master  \
+	&& printf "\n" \
+	&& git checkout develop && git pull origin develop  \
+	&& printf "\n" \
+	&& git checkout $currentbranch ; }; 
 
 
 ### Misc
