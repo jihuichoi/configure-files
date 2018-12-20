@@ -59,6 +59,7 @@ alias gs='git status -s'
 alias gad='git add'
 alias gcm='git commit -m'
 alias gdf='git diff --word-diff=color'
+function gitl() {if [ $# -eq 0 ]; then git l; else git l ":(exclude)$1"; fi;}
 
 # push to origin [branch], pull from origin [branch]:  ex) gpull master
 function gpush() { if [ $# -eq 0 ]; then git push origin $(git branch | cut -d" " -f 2); else git push origin $1; fi;}

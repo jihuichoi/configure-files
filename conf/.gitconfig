@@ -75,7 +75,7 @@
     lp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' -- 
     # 페이저로 표시, 자세히
     llp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- 
-
+    
     # log and grep
     #커밋로그에서 검색
     gr=!git log --oneline --decorate --grep
