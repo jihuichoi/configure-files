@@ -19,7 +19,7 @@ alias dockerbash='docker exec -it $@ /bin/bash'
 alias fl='_(){ find $@ -exec ls -alh {} \;| column -t | sort -k9}; _'
 
 # find something and show the size
-function fdu() { find $@ -type f -exec du -ch {} + | grep total$ }
+function fdu() { find $@ -type f -exec du -ch {} + | grep total$ ;};
 
 # ls with options
 # -a : all files
@@ -59,11 +59,11 @@ alias gs='git status -s'
 alias gad='git add'
 alias gcm='git commit -m'
 alias gdf='git diff --word-diff=color'
-function gitl() { if [ $# -eq 0 ]; then git l; else git l ":(exclude)$1"; fi;}
+function gitl() { if [ $# -eq 0 ]; then git l; else git l ":(exclude)$1"; fi;};
 
 # push to origin [branch], pull from origin [branch]:  ex) gpull master
-function gpush() { if [ $# -eq 0 ]; then git push origin $(git branch | cut -d" " -f 2); else git push origin $1; fi;}
-function gpull() { if [ $# -eq 0 ]; then git pull origin $(git branch | cut -d" " -f 2); else git pull origin $1; fi;}
+function gpush() { if [ $# -eq 0 ]; then git push origin $(git branch | cut -d" " -f 2); else git push origin $1; fi;};
+function gpull() { if [ $# -eq 0 ]; then git pull origin $(git branch | cut -d" " -f 2); else git pull origin $1; fi;};
 
 # pull master/develop from origin and back to current branch
 function gsupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}'); 
@@ -93,7 +93,7 @@ alias osupdate='sudo apt autoremove && sudo apt update && sudo apt full-upgrade 
 alias psgrep='ps aux | grep -ni --color'
 
 #지정한 키워드가 들어간 프로세스 모두 삭제: kall 키워드
-function kall() { ps aux | grep "$1" | grep -v "fpm\|grep" | awk '{print $2}' | xargs kill -9 }
+function kall() { ps aux | grep "$1" | grep -v "fpm\|grep" | awk '{print $2}' | xargs kill -9; };
 
 #for safety
 alias crontab='crontab -i'
