@@ -12,6 +12,8 @@ alias godep='~/go/bin/dep'
 #Docker
 alias dockerbash='docker exec -it $@ /bin/bash'
 
+#K8s
+alias kt="/Users/jihuichoi/workspace/jihui/kubetail/kubetail $@ -sed 's/T\([0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}\)\.[0-9]\{1,10\}+09:00/ \1/g'"
 
 ### find, ls, grep, du
 
