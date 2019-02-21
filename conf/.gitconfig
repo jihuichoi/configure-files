@@ -44,7 +44,8 @@
     cl = clone
     ci = commit -m
     co = checkout
-    br = branch -v
+    #br = branch -v
+    br = !git branch --format='%(color: magenta)%(objectname:short)%(color: reset) %(color: blue)%(committerdate:format:%Y-%m-%d %H:%M:%S)%(color: reset) %(color: green)%(authorname)%(color: reset)%09 %(align:30,left)%(refname:short)%(end) %09 %(contents:subject)'
     diff = diff --word-diff=color
     dc = diff --cached
 
