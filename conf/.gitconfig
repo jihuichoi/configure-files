@@ -114,7 +114,7 @@
     # Tags commands
     ft = "!git fetch --tags"
     pt = "!git push --tags"
-    tags = "!git tag --format='%(color: magenta)%(objectname:short)%(color: reset) %(color: blue)%(committerdate:format:%Y-%m-%d %H:%M:%S)%(color: reset) %(color: green)%(authorname)%(color: reset)%09 %(align:30,left)%(refname:short)%(end) %09 %(contents:subject)'"
+    tags = "!git tag --sort=-creatordate --format='%(color: magenta)%(objectname:short)%(color: reset) %(color: blue)%(committerdate:format:%Y-%m-%d %H:%M:%S)%(color: reset) %(color: green)%(authorname)%(color: reset)%09 %(align:30,left)%(refname:short)%(end) %09 %(contents:subject)'"
 
 
     # Basic navigation
