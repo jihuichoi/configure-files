@@ -108,12 +108,14 @@
     ss = "!git stash save"
     sp = "!git stash pop"
     sa = "!git stash apply"
-    sl = "!git stash list --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
+    sl = "!git stash list --pretty=format:'%C(magenta)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %C(blue)%ci%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
     sc = "!git stash clear"
 
     # Tags commands
     ft = "!git fetch --tags"
     pt = "!git push --tags"
+    tags = "!git tag --format='%(color: magenta)%(objectname:short)%(color: reset) %(color: blue)%(committerdate:format:%Y-%m-%d %H:%M:%S)%(color: reset) %(color: green)%(authorname)%(color: reset)%09 %(align:30,left)%(refname:short)%(end) %09 %(contents:subject)'"
+
 
     # Basic navigation
     cm = "!git checkout master"
