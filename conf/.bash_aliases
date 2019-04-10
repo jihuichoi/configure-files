@@ -1,19 +1,3 @@
-### URI
-alias jihui='~/go/src/github.com/jihuichoi'
-alias workspace='~/workspace'
-
-### Favorite
-
-#Golang
-alias govendor='~/go/bin/govendor'
-alias realize='~/go/bin/realize'
-alias godep='~/go/bin/dep'
-
-#Docker
-alias dockerbash='docker exec -it $@ /bin/bash'
-
-#K8s
-alias kt="/Users/jihuichoi/workspace/jihui/kubetail/kubetail $@ -sed 's/T\([0-9]\{2\}:[0-9]\{2\}:[0-9]\{2\}\)\.[0-9]\{1,10\}+09:00/ \1/g'"
 
 ### find, ls, grep, du
 
@@ -53,6 +37,7 @@ alias dus4='du -ch -d  4 | sort -h'
 
 
 ### GIT
+export LESSCHARSET=utf-8
 
 # basic actions
 alias git='LANG=en_GB git'
@@ -67,13 +52,6 @@ function gitl() { if [ $# -eq 0 ]; then git l; else git l ":(exclude)$1"; fi;};
 function gpush() { if [ $# -eq 0 ]; then git push origin $(git branch | cut -d" " -f 2); else git push origin $1; fi;};
 function gpull() { if [ $# -eq 0 ]; then git pull origin $(git branch | cut -d" " -f 2); else git pull origin $1; fi;};
 
-# pull master/develop from origin and back to current branch
-function gsupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}'); 
-	git checkout master && git pull origin master && git subtree pull --prefix=protobuf protobuf master \
-	&& printf "\n" \
-	&& git checkout develop && git pull origin develop && git subtree pull --prefix=protobuf protobuf master \
-	&& printf "\n" \
-	&& git checkout $currentbranch && git subtree pull --prefix=protobuf protobuf master; }; 
 
 function gupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}'); 
 	git checkout master && git pull origin master  \
@@ -104,47 +82,3 @@ alias cp='cp -i'
 alias mv='mv -i'
 alias df='df -h'
 alias du='du -h'
-
-
-
-# Not in use
-# 
-# #log tail 관련
-# alias ctail='_(){ tail $@ | $LINUX_SETTING/bin/color.pl; }; _'
-# alias log='ctail -f `ls -t /backup/logs/log* | head -1`'
-# 
-# #at jobs
-# alias atlt='_(){ for job_no in $(atq | cut -f 1);
-# do
-# 	#검색어 존재 여부에 따라 분기
-# 	if [ -n "$1" ]; then
-# 		job_cmd=$(at -c "$job_no" | grep "^php" | grep "$1" | sed -e "s/string1/g" -e "s/string2/g");
-# 	else
-# 		job_cmd=$(at -c "$job_no" | grep "^php" | sed -e "s/string1/g" -e "s/string2/g");
-# 	fi;
-# 
-# 	if [ -n "$job_cmd" ]; then
-# 			atq | grep "^$job_no" | cut -d" " -f1-5 | tr "\n" " ";
-# 			company=$(echo $job_cmd | cut -d" " -f2);
-# 
-# 			chrlen=${#company};
-# 			if [ "$chrlen" -le 3 ]; then
-# 					echo "$company\t\t\t" | tr "\n" " ";
-# 			elif [ "$chrlen" -lt 7 ]; then
-# 					echo "$company\t\t" | tr "\n" " ";
-# 			elif [ "$chrlen" -gt 11 ]; then
-# 					echo "${company:0:9}..\t" | tr "\n" " ";
-# 			else
-# 					echo "$company\t" | tr "\n" " ";
-# 			fi;
-# 
-# 			echo ": $job_cmd";
-# 	fi;
-# done | sort -k4 }; _'
-# 
-# #지정 at 작업 삭제
-# alias atrmg='_(){ pList=$(atl $@ | awk "{print \$1}" | tr "\n" " ");
-# 	if [ -n "$pList" ]; then
-# 		atrm $(echo $pList);
-# 	fi;
-# }; _'

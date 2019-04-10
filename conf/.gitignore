@@ -59,7 +59,7 @@ vendor/*
 
 # -- Custom
 # configuration
-
+*_not_in_use
 
 
 

@@ -45,7 +45,8 @@
     ci = commit -m
     co = checkout
     #br = branch -v
-    br = !git branch --format='%(color: magenta)%(objectname:short)%(color: reset) %(color: blue)%(committerdate:format:%Y-%m-%d %H:%M:%S)%(color: reset) %(color: green)%(authorname)%(color: reset)%09 %(align:30,left)%(refname:short)%(end) %09 %(contents:subject)'
+    br = !git branch --sort=-committerdate --format='%(color: magenta)%(objectname:short)%(color: reset) %(color: blue)%(committerdate:format:%Y-%m-%d %H:%M:%S)%(color: reset) %(color: green)%(authorname)%(color: reset)%09 %(HEAD)%(align:30,left)%(refname:short)%(end) %09 %(contents:subject)'
+
     diff = diff --word-diff=color
     dc = diff --cached
 
@@ -69,14 +70,14 @@
     
     # 페이저 없이 최근 20개만
     l = !git --no-pager log --decorate-refs-exclude="refs/remotes/private" -n20 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' -- 
-    # 페이저 없이 최근 20개만, 자세히
+    # 페이저 없이 최근 10개만, 자세히
     ll = !git --no-pager log --decorate-refs-exclude="refs/remotes/private" -n10 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- 
 
     # 페이저로 표시
     lp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' -- 
     # 페이저로 표시, 자세히
     llp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- 
-    
+
     # log and grep
     #커밋로그에서 검색
     gr=!git log --oneline --decorate --grep
@@ -84,6 +85,14 @@
     grf=!git log --oneline --decorate -G
     
     
+    # Stash commands
+    ss = "!git stash save"
+    sp = "!git stash pop"
+    sa = "!git stash apply"
+    sl = "!git stash list --pretty=format:'%C(magenta)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %C(blue)%ci%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
+    sc = "!git stash clear"
+    sh = "!git stash show"
+
     # 정리 필요    
     lc = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git ll $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
     diffr = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git diff $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
@@ -104,18 +113,12 @@
     assumeall = !git st -s | awk {'print $2'} | xargs git assume
     aa = !git assumeall
 
-    # Stash commands
-    ss = "!git stash save"
-    sp = "!git stash pop"
-    sa = "!git stash apply"
-    sl = "!git stash list --pretty=format:'%C(magenta)%h%C(reset) - %C(dim yellow)(%C(bold magenta)%gd%C(dim yellow))%C(reset) %C(blue)%ci%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)'"
-    sc = "!git stash clear"
+
 
     # Tags commands
     ft = "!git fetch --tags"
     pt = "!git push --tags"
     tags = "!git tag --sort=-creatordate --format='%(color: magenta)%(objectname:short)%(color: reset) %(color: blue)%(committerdate:format:%Y-%m-%d %H:%M:%S)%(color: reset) %(color: green)%(authorname)%(color: reset)%09 %(align:30,left)%(refname:short)%(end) %09 %(contents:subject)'"
-
 
     # Basic navigation
     cm = "!git checkout master"
@@ -150,3 +153,11 @@
     frs = "!f() { if [ ! -z $1 ] ; then git flow release start $1 ${2:-master}; else echo 'Invalid name'; exit 1; fi; }; f"
     frf = !git flow release finish -F $(git fcb)
     frp = !git flow release publish $(git fcb)
+    
+[i18n]
+	commitEncoding = utf-8
+	logOutputEncoding = utf-8
+[core]
+	quotepath = off
+
+
