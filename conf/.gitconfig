@@ -84,6 +84,8 @@
     #파일에서 검색
     grf=!git log --oneline --decorate -G
     
+    # reflog
+    rl = reflog --format='%C(auto)%h %<|(20)%gd %C(blue)%ci%C(reset) %gs (%s)'
     
     # Stash commands
     ss = "!git stash save"
