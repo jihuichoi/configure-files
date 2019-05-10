@@ -161,5 +161,4 @@
 	logOutputEncoding = utf-8
 [core]
 	quotepath = off
-
-
+	editor = vim
