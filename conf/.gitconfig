@@ -1,18 +1,18 @@
 [user]
-    name = 
-    email = 
+    name =
+    email =
 
 [log]
-    decorate = full
+	decorate = full
 [color]
-    ui = true
+	ui = true
 [push]
-    default = matching
+	default = matching
 [diff]
-    compactionHeuristic = true
+	compactionHeuristic = true
 
 [url "git@github.com:"]
-	insteadOf = https://github.com/
+    insteadOf = https://github.com/
 
 # GIT aliases for ~/.gitconfig file
 # @author Grzegorz Korba <grzegorz.korba@codito.net>
@@ -28,12 +28,12 @@
     hotfix = hotfix/
     bugfix = bugfix/
     support = support/
-    versiontag = 
+    versiontag =
 
 # Alias section.
 [alias]
-    # List available aliases
-    la = !git config -l | grep alias | cut -c 7- | sed 's/=/ = /'
+	# List available aliases
+	la = !git config -l | grep alias | cut -c 7- | sed 's/=/ = /'
 
     # Make file executable (chmod +x)
     exec = "!f() { if [ -f $1 ]; then git update-index --chmod=+x --add $1; else echo 'Invalid file'; exit 1; fi; }; f"
@@ -59,7 +59,7 @@
     # Version tags
     #lv = "!f() { VERSION_PREFIX=$(git config --get gitflow.prefix.versiontag || echo ''); TAGS_LIST=$(git rev-list --tags=$VERSION_PREFIX'[0-9].[0-9]*' --max-count=1 2>&1); S=$?; if [[ $S = 0 ]]; then git describe --tags $TAGS_LIST; else echo 'No version tags found'; exit 1; fi; }; f"
     av = !git describe --abbrev=0
-    
+
     # log commands
     #ll = log --pretty=format:%C(yellow)%h\\ %Cblue[%cn]%Cred%d\\ %Creset%s --decorate --numstat
     #ls = log --pretty=format:%C(yellow)%h\\ %Cblue[%cn]%Cred%d\\ %Creset%s --decorate
@@ -67,26 +67,26 @@
 
     # 특정 단어가 들어간 코멘트는 제외하고 보여줌. 예: 커밋 메세지에 misc 가 들어간 커밋은 제외
     le = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --grep misc --invert-grep --
-    
+
     # 페이저 없이 최근 20개만
-    l = !git --no-pager log --decorate-refs-exclude="refs/remotes/private" -n20 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' -- 
+    l = !git --no-pager log --decorate-refs-exclude="refs/remotes/private" -n20 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --
     # 페이저 없이 최근 10개만, 자세히
-    ll = !git --no-pager log --decorate-refs-exclude="refs/remotes/private" -n10 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- 
+    ll = !git --no-pager log --decorate-refs-exclude="refs/remotes/private" -n10 --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat --
 
     # 페이저로 표시
-    lp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' -- 
+    lp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%s%C(reset) %C(bold yellow)%d%C(reset)' --
     # 페이저로 표시, 자세히
-    llp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat -- 
+    llp = log --decorate-refs-exclude="refs/remotes/private" --graph --abbrev-commit --decorate --date=iso --format=format:'%C(magenta)%h%C(reset) %C(blue)%ad%x08%x08%x08%x08%x08%x08%x08%x08%x08%C(reset) %C(green)%an%C(reset)%x09 %C(white)%n%B%C(reset) %C(bold yellow)%d%C(reset)' --stat --
 
     # log and grep
     #커밋로그에서 검색
     gr=!git log --oneline --decorate --grep
     #파일에서 검색
     grf=!git log --oneline --decorate -G
-    
+
     # reflog
     rl = reflog --format='%C(auto)%h %<|(20)%gd %C(blue)%ci%C(reset) %gs (%s)'
-    
+
     # Stash commands
     ss = "!git stash save"
     sp = "!git stash pop"
@@ -95,7 +95,7 @@
     sc = "!git stash clear"
     sh = "!git stash show"
 
-    # 정리 필요    
+    # 정리 필요
     lc = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git ll $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
     diffr = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git diff $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
     dr = !git diffr
@@ -127,7 +127,7 @@
     #mm = "!git merge master"
     cd = "!git checkout develop"
     #md = "!git merge develop"
-    
+
 
     # GitFlow shortcuts
     #fid = !git flow init -d
@@ -155,7 +155,7 @@
     frs = "!f() { if [ ! -z $1 ] ; then git flow release start $1 ${2:-master}; else echo 'Invalid name'; exit 1; fi; }; f"
     frf = !git flow release finish -F $(git fcb)
     frp = !git flow release publish $(git fcb)
-    
+
 [i18n]
 	commitEncoding = utf-8
 	logOutputEncoding = utf-8

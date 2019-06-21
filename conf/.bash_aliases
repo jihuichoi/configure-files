@@ -53,12 +53,12 @@ function gpush() { if [ $# -eq 0 ]; then git push origin $(git branch | cut -d" 
 function gpull() { if [ $# -eq 0 ]; then git pull origin $(git branch | cut -d" " -f 2); else git pull origin $1; fi;};
 
 
-function gupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}'); 
+function gupdate() { currentbranch=$(git branch | awk '/\*/{print $2}' | awk '{print $1}');
 	git checkout master && git pull origin master  \
 	&& printf "\n" \
 	&& git checkout develop && git pull origin develop  \
 	&& printf "\n" \
-	&& git checkout $currentbranch ; }; 
+	&& git checkout $currentbranch ; };
 
 
 ### Misc
