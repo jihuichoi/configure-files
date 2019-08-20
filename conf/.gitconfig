@@ -162,3 +162,4 @@
 [core]
 	quotepath = off
 	editor = vim
+    # editor = 'C:\\Users\\swit\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code.cmd' -w
