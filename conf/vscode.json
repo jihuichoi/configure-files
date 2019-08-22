@@ -1,45 +1,68 @@
 {
-    "workbench.colorTheme": "One Dark Pro",
-    "sync.gist": "",
-    "workbench.startupEditor": "newUntitledFile",
-	"files.autoSave": "afterDelay",
+	"workbench.colorTheme": "One Dark Pro",
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.tree.indent": 20, // tree view 들여쓰기 간격 조정
+	"workbench.editor.enablePreview": false,
+	"window.restoreWindows": "all", // 다시 열때 이전 창 모두 복구
+
+	// 설정 싱크
+	"sync.gist": "",
 	"sync.quietSync": true,
 	"sync.removeExtensions": true,
 	"sync.syncExtensions": true,
 	"sync.autoDownload": false,
 	"sync.autoUpload": false,
 	"sync.forceDownload": false,
+
+	// 파일 관련
+	"files.autoSave": "afterDelay",
+	"files.eol": "\n", // 줄바꿈 기호
+	"files.associations": {
+		"*.md": "markdown",
+	}, // 파일 확장자와 언어 연결
+	"files.defaultLanguage": "markdown", // (새 파일) 파일 기본 포맷
+
+	// 편집기
+	"editor.largeFileOptimizations": true,
 	"editor.fontSize": 13,
-	"git.autofetch": true,
-	"typescript.locale": "ko",
-	"explorer.confirmDelete": false,
-	"editor.largeFileOptimizations": false,
-	"go.formatTool": "gofmt",
 	"editor.formatOnPaste": true,
+	"editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace, 'Ubuntu_Mono_derivative_Powerline', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Ubuntu_Mono_derivative_Powerline'", // 편집기 글꼴
+	"editor.insertSpaces": false, // 탭대신 스페이스 사용 안함
+	"editor.fontLigatures": true, // 글꼴 연산자 표시
+
+	// 통합 터미널 관련 설정
+	"terminal.integrated.fontFamily": "'Ubuntu Mono derivative Powerline'", // 내장 터미널 글꼴
+	"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe", // 윈도우즈용 내장 터미널 지정
+	"terminal.integrated.shell.osx": "/bin/zsh",
+	"terminal.integrated.fontSize": 14,
+	"terminal.integrated.shellArgs.osx": [],
+	"terminal.integrated.lineHeight": 1.2, // 터미널 줄간격
+	"terminal.integrated.copyOnSelection": true, // 내장 터미널: 선택시 클립보드로 저장
+	"terminal.integrated.shellArgs.windows": [
+		"-l"
+	], // 윈도우즈용 내장 터미널 파라미터
+	"terminal.external.osxExec": "iTerm.app",
+	"terminal.explorerKind": "external",
+
+	// 확장 기능
+	"extensions.ignoreRecommendations": false,
+
+	// 기타
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"typescript.locale": "ko",
+	"diffEditor.renderSideBySide": true,
+	"markdown.extension.toc.githubCompatibility": true,
+	"git.confirmSync": false,
+	"git.autofetch": true,
+
+	// golang
+	"go.formatTool": "gofmt",
 	"go.autocompleteUnimportedPackages": true,
 	"go.gotoSymbol.includeImports": true,
 	"go.lintFlags": [
 		"--disable=all",
 		"--enable=errcheck"
 	],
-	"files.eol": "\n",
-	"extensions.ignoreRecommendations": false,
-	"diffEditor.renderSideBySide": true,
-	"markdown.extension.toc.githubCompatibility": true,
-	"git.confirmSync": false,
-	"files.associations": {
-		"*.md": "markdown",
-	},
-	"files.defaultLanguage": "markdown",
-	"editor.fontFamily": "'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Ubuntu_Mono_derivative_Powerline'",
-	"terminal.integrated.fontFamily": "'Ubuntu Mono derivative Powerline'",
-	"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-	"explorer.confirmDragAndDrop": false,
-	"terminal.integrated.copyOnSelection": true,
-	"terminal.integrated.shellArgs.windows": [
-		"-l"
-	],
-	"editor.insertSpaces": false,
 	"go.useLanguageServer": true,
-	"window.restoreWindows": "all",
 }
