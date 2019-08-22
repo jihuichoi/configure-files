@@ -11,10 +11,11 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: '1234'
       MYSQL_DATABASE: 'test'
-      MYSQL_USER: 'user'
+      MYSQL_USER: 'test'
       MYSQL_PASSWORD: '1234'
       # TZ: "Asia/Seoul"
     volumes:
+      - "./mysql.conf:/etc/mysql/conf.d/z_my.cnf"
       - "./db_data:/var/lib/mysql"
-      - ./mysql.conf:/etc/mysql/conf.d/z_my.cnf
+      - "./log:/var/log/mysql"
       # - "./backup.sql:/docker-entrypoint-initdb.d/dump.sql"
