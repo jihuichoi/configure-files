@@ -1,11 +1,9 @@
-// Empty
 [
 	{ // 기본 단축키 변경
 		"key": "",
 		"command": "editor.foldLevel2",
 		"when": "editorTextFocus && foldingEnabled"
 	},
-
 	// Toggle between terminal and editor focus
 	{ // 에디터로 이동
 		"key": "cmd+1",
@@ -15,5 +13,24 @@
 	{ // 터미널로 이동
 		"key": "cmd+2",
 		"command": "workbench.action.terminal.focus",
+	},
+	// 마우스 버튼4,5로 back/forward 이동
+	{
+		"key": "",
+		"command": "editor.action.indentLines",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "",
+		"command": "editor.action.outdentLines",
+		"when": "editorTextFocus && !editorReadonly"
+	},
+	{
+		"key": "cmd+[",
+		"command": "workbench.action.navigateBack",
+	},
+	{
+		"key": "cmd+]",
+		"command": "workbench.action.navigateForward",
 	},
 ]
