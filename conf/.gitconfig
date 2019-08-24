@@ -95,9 +95,12 @@
     sc = "!git stash clear"
     sh = "!git stash show"
 
-    # git pull --all origin
+    # git puall 리모트약칭 exe) git puall origin
     puall = "!f() { git fetch $1; git branch -r | grep $1 | grep -v '\\->' | grep -v 'master' | while read remote; do git branch --track \"${remote#$1/}\" "$remote"; done; }; f"
 
+    # git psall 리모트약칭 == git push --all 리모트약칭, ex) git psall origin
+    psall = "!f() { git push --all $1; }; f"
+    
 
     # 정리 필요
     lc = "!f() { if [ ! -z $1 ] && [ ! -z $2 ]; then git ll $1^..$1; else echo 'Invalid from/to'; exit 1; fi; }; f"
@@ -166,4 +169,4 @@
 [core]
 	quotepath = off
 	# editor = vim
-   	# editor = \"C:\\Users\\jihui\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe\" --wait
+    editor = 'C:\\Users\\swit\\AppData\\Local\\Programs\\Microsoft VS Code\\bin\\code.cmd' -w

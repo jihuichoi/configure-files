@@ -14,6 +14,7 @@ function fdu() { find $@ -type f -exec du -ch {} + | grep total$ ;};
 # -L : show inside of symbolic link
 # -r : reverse order while sorting
 # -t : sort by modification time, newest first
+alias ls='ls --time-style=long-iso'
 alias l='ls -alh'		# all, long, human-readable
 alias ll='ls -Lalh'		# all, long, human-readable for symbolic link
 alias lt='ls -alhtr'	# all, long, human-readble, sort by modi-time, order by reverse
