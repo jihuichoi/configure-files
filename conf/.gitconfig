@@ -121,7 +121,8 @@
     uaa = !git unassumeall
     assumeall = !git st -s | awk {'print $2'} | xargs git assume
     aa = !git assumeall
-
+    assumedeletedfiles = !git ls-files --deleted -z | git update-index --assume-unchanged -z --stdin
+    assumedel = !git assumedeletedfiles
 
 
     # Tags commands
