@@ -22,22 +22,33 @@ else
 		dev)
 			echo "It will remove vendor directory and assume-unchanged at git."
 			echo ""
+
 			# echo "rm -rf ./vendor"
 			# rm -rf ./vendor
+
 			echo "mv ./vendor ./vendor_tmp"
 			mv ./vendor ./vendor_tmp
+
 			# echo "git ls-files --deleted -z | git update-index --assume-unchanged -z --stdin"
 			# git ls-files --deleted -z | git update-index --assume-unchanged -z --stdin
-			echo "git ls-files -z ./vendor/ ./vendor_tmp/ | xargs -0 git update-index --assume-unchanged"
-			git ls-files -z ./vendor/ ./vendor_tmp/ | xargs -0 git update-index --assume-unchanged
+
+			echo "git ls-files -z ./vendor/ | xargs -0 git update-index --assume-unchanged"
+			git ls-files -z ./vendor/ | xargs -0 git update-index --assume-unchanged
+
+			echo "echo \"vendor_tmp\" >> .git/info/exclude"
+			echo "vendor_tmp" >> .git/info/exclude
 			;;
+
 		deploy)
 			echo "It will recover assumed-unchanged files at git and update vendor directory."
 			echo ""
-			echo "mv ./vendor_tmp ./vendor"
-			mv ./vendor_tmp ./vendor
+
+			echo "mv ./vendor_tmp ./vendor && ex -s -c"g/^vendor_tmp\$/d" -cwq .git/info/exclude"
+			mv ./vendor_tmp ./vendor && ex -s -c"g/^vendor_tmp\$/d" -cwq .git/info/exclude		
+
 			echo "git assumed | xargs git update-index --no-assume-unchanged"
 			git assumed | xargs git update-index --no-assume-unchanged
+			
 			echo "dep ensure -update"
 			dep ensure -update
 			;;
