@@ -2,9 +2,10 @@
 	"workbench.colorTheme": "One Dark Pro",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.tree.indent": 20, // tree view 들여쓰기 간격 조정
-	"workbench.editor.enablePreview": false,
+	"workbench.editor.enablePreview": true,
+	"workbench.commandPalette.history": 200,
+	"window.zoomLevel": 0,
 	"window.restoreWindows": "all", // 다시 열때 이전 창 모두 복구
-
 	// 설정 싱크
 	"sync.gist": "",
 	"sync.quietSync": true,
@@ -13,7 +14,7 @@
 	"sync.autoDownload": false,
 	"sync.autoUpload": false,
 	"sync.forceDownload": false,
-
+	"sync.forceUpload": true,
 	// 파일 관련
 	"files.autoSave": "afterDelay",
 	"files.eol": "\n", // 줄바꿈 기호
@@ -21,15 +22,12 @@
 		"*.md": "markdown",
 	}, // 파일 확장자와 언어 연결
 	"files.defaultLanguage": "markdown", // (새 파일) 파일 기본 포맷
-
 	// 편집기
 	"editor.largeFileOptimizations": true,
 	"editor.fontSize": 13,
 	"editor.formatOnPaste": true,
-	"editor.fontFamily": "Hack, Menlo, Monaco, 'Courier New', monospace, 'Ubuntu_Mono_derivative_Powerline', 'Droid Sans Mono', 'monospace', monospace, 'Droid Sans Fallback', 'Ubuntu_Mono_derivative_Powerline'", // 편집기 글꼴
-	"editor.insertSpaces": false, // 탭대신 스페이스 사용 안함
-	"editor.fontLigatures": true, // 글꼴 연산자 표시
-
+	"editor.fontFamily": "'Fira Code', Menlo, Monaco, 'Courier New', monospace, 'Droid Sans Mono', 'Droid Sans Fallback'", // 편집기 글꼴
+	"editor.insertSpaces": false, // 글꼴 연산자 표시
 	// 통합 터미널 관련 설정
 	"terminal.integrated.fontFamily": "'Ubuntu Mono derivative Powerline'", // 내장 터미널 글꼴
 	"terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe", // 윈도우즈용 내장 터미널 지정
@@ -43,19 +41,8 @@
 	], // 윈도우즈용 내장 터미널 파라미터
 	"terminal.external.osxExec": "iTerm.app",
 	"terminal.explorerKind": "external",
-
 	// 확장 기능
 	"extensions.ignoreRecommendations": false,
-
-	// 기타
-	"explorer.confirmDragAndDrop": false,
-	"explorer.confirmDelete": false,
-	"typescript.locale": "ko",
-	"diffEditor.renderSideBySide": true,
-	"markdown.extension.toc.githubCompatibility": true,
-	"git.confirmSync": false,
-	"git.autofetch": true,
-
 	// golang
 	"go.formatTool": "gofmt",
 	"go.autocompleteUnimportedPackages": true,
@@ -65,4 +52,17 @@
 		"--enable=errcheck"
 	],
 	"go.useLanguageServer": true,
+	// 기타
+	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmDelete": false,
+	"typescript.locale": "ko",
+	"diffEditor.renderSideBySide": true,
+	"markdown.extension.toc.githubCompatibility": true,
+	"git.confirmSync": false,
+	"git.autofetch": true,
+	// since 2019.08.23
+	"search.exclude": { // 검색에서 제외할 디렉토리
+		"**/node_modules": true
+	},
+	"search.useIgnoreFiles": true
 }
