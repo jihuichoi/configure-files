@@ -1,0 +1,20 @@
+# directories
+.cache/
+.mozilla/
+.oh-my-zsh/
+.thumbnails/
+Desktop/
+Documents/
+Downloads/
+Music/
+Pictures/
+Public/
+Templates/
+Videos/
+workspace/
+
+# files
+*.log*
+.zcompdump*
+
+# custom

@@ -1,0 +1,17 @@
+# directories
+.Trash/
+.oh-my-zsh/
+Applications/
+Downloads/
+Library/
+Movies/
+Music/
+Pictures/
+Public/
+workspace/
+
+# files
+.CFUserTextEncoding
+.zcompdump*
+
+# custom
