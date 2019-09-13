@@ -1,5 +1,6 @@
 # directories
 .cache/
+.conky/
 .mozilla/
 .oh-my-zsh/
 .thumbnails/
@@ -15,6 +16,7 @@ workspace/
 
 # files
 *.log*
+*-log.*
 .zcompdump*
 
 # custom

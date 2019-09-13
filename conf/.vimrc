@@ -17,11 +17,12 @@ set ignorecase " 검색시 대소문자 무시, set ic 도 가능
 set tabstop=4 "  탭을 4칸으로
 set lbr
 set incsearch "  키워드 입력시 점진적 검색
-syntax on "  구문강조 사용
-filetype indent on "  파일 종류에 따른 구문강조
-set background=dark " 하이라이팅 lihgt / dark
-colorscheme desert  "  vi 색상 테마 설정
 set backspace=eol,start,indent "  줄의 끝, 시작, 들여쓰기에서 백스페이스시 이전줄로
 set history=1000 "  vi 편집기록 기억갯수 .viminfo에 기록
 set paste
 set encoding=utf-8 " 화면 인코딩
+set background=dark " 하이라이팅 lihgt / dark
+
+syntax on "  구문강조 사용
+filetype indent on "  파일 종류에 따른 구문강조
+colorscheme desert  "  vi 색상 테마 설정

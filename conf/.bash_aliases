@@ -43,7 +43,7 @@ export LESSCHARSET=utf-8
 # basic actions
 alias git='LANG=en_GB git'
 alias gch='git checkout'
-alias gs='git status -s'
+alias gits='git status -s'
 alias gad='git add'
 alias gcm='git commit -m'
 alias gdf='git diff --word-diff=color'
